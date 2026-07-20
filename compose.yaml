@@ -1,0 +1,19 @@
+services:
+  db:
+    container_name: django_test_app
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: appuser
+      POSTGRES_PASSWORD: secretpassword
+      POSTGRES_DB: myapp
+    networks:
+      - base_network
+    volumes:
+      - base_volume:/var/lib/postgres/data
+networks:
+  base_network:
+      driver : bridge
+volumes:
+  base_volume:
